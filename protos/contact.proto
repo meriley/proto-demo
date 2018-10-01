@@ -1,0 +1,22 @@
+syntax="proto3";
+
+package Demo;
+
+import "google/protobuf/wrappers.proto";
+
+message Contact {
+
+    enum PhoneType {
+        UNSET   = 0;    // Default
+        CELL    = 1;
+        HOME    = 2;
+    }
+
+    message PhoneNumber {
+        PhoneType                   type    = 1;
+        google.protobuf.StringValue number  = 2;
+    }
+
+    repeated PhoneNumber                    phone  = 1;
+    repeated google.protobuf.StringValue    email  = 2;
+}

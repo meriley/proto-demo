@@ -1,0 +1,31 @@
+syntax="proto3";
+
+package Demo;
+
+import "location.proto";
+import "contact.proto";
+import "google/protobuf/wrappers.proto";
+
+message Person {
+
+    enum Prefix {
+        PFX_UNSET   = 0;    // Default
+        MR          = 1;
+        MS          = 2;
+        MRS         = 3;
+    }
+
+    enum Suffix {
+        SFX_UNSET   = 0;    // Default
+        JR          = 1;
+        SR          = 2;
+    }
+
+    Prefix                      prefix      = 1;
+    google.protobuf.StringValue first       = 2;
+    google.protobuf.StringValue last        = 3;
+    Suffix                      suffix      = 4;
+    Location                    location    = 5;
+    Contact                     contact     = 6;
+}
+
