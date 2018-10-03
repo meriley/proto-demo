@@ -36,16 +36,33 @@ func main() {
 		},
 	}
 
+	addressbook := &myproto.AddressBook{
+		Bookname: &wrappers.StringValue{Value: "MyBook"},
+		Contact: map[string]*myproto.Person{
+			"BFF": person,
+			"Mom": &myproto.Person{
+				First: &wrappers.StringValue{Value: "Mom"},
+				Contact: &myproto.Contact{
+					Phone: []*myproto.Contact_PhoneNumber{
+						&myproto.Contact_PhoneNumber{
+							Number: &wrappers.StringValue{Value: "(123) 456-7890"},
+						},
+					},
+				},
+			},
+		},
+	}
+
 	/**
 	 * Our protobuf person written to console as a string.
 	 */
-	fmt.Println(person.String())
+	fmt.Println(addressbook.String())
 
 	/**
 	 *	Serialize our Person to a stream of bytes
 	 */
 
-	serialized, marshalErr := proto.Marshal(person)
+	serialized, marshalErr := proto.Marshal(addressbook)
 
 	if marshalErr != nil {
 		fmt.Println(marshalErr)
@@ -58,15 +75,15 @@ func main() {
 	/**
 	 * Deserialize our person byte stream back into a person.
 	 */
-	newPerson := myproto.Person{}
-	unmarshalErr := proto.Unmarshal(serialized, &newPerson)
+	addrBook := &myproto.AddressBook{}
+	unmarshalErr := proto.Unmarshal(serialized, addrBook)
 
 	if unmarshalErr != nil {
 		fmt.Println(unmarshalErr)
 		return
 	}
 
-	fmt.Print("Our person has returned to person form!")
-	fmt.Print(newPerson.String())
+	fmt.Print("Our Phone book is back!")
+	fmt.Print(addrBook.String())
 
 }

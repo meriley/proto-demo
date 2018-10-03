@@ -3,23 +3,15 @@
 
 package myproto
 
-import (
-	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
-	math "math"
-)
+import proto "github.com/golang/protobuf/proto"
+import fmt "fmt"
+import math "math"
+import google_protobuf "github.com/golang/protobuf/ptypes/wrappers"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
-
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Contact_PhoneType int32
 
@@ -34,7 +26,6 @@ var Contact_PhoneType_name = map[int32]string{
 	1: "CELL",
 	2: "HOME",
 }
-
 var Contact_PhoneType_value = map[string]int32{
 	"UNSET": 0,
 	"CELL":  1,
@@ -44,43 +35,17 @@ var Contact_PhoneType_value = map[string]int32{
 func (x Contact_PhoneType) String() string {
 	return proto.EnumName(Contact_PhoneType_name, int32(x))
 }
-
-func (Contact_PhoneType) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_a5036fff2565fb15, []int{0, 0}
-}
+func (Contact_PhoneType) EnumDescriptor() ([]byte, []int) { return fileDescriptor1, []int{0, 0} }
 
 type Contact struct {
-	Phone                []*Contact_PhoneNumber  `protobuf:"bytes,1,rep,name=phone,proto3" json:"phone,omitempty"`
-	Email                []*wrappers.StringValue `protobuf:"bytes,2,rep,name=email,proto3" json:"email,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}                `json:"-"`
-	XXX_unrecognized     []byte                  `json:"-"`
-	XXX_sizecache        int32                   `json:"-"`
+	Phone []*Contact_PhoneNumber         `protobuf:"bytes,1,rep,name=phone" json:"phone,omitempty"`
+	Email []*google_protobuf.StringValue `protobuf:"bytes,2,rep,name=email" json:"email,omitempty"`
 }
 
-func (m *Contact) Reset()         { *m = Contact{} }
-func (m *Contact) String() string { return proto.CompactTextString(m) }
-func (*Contact) ProtoMessage()    {}
-func (*Contact) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a5036fff2565fb15, []int{0}
-}
-
-func (m *Contact) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Contact.Unmarshal(m, b)
-}
-func (m *Contact) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Contact.Marshal(b, m, deterministic)
-}
-func (m *Contact) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Contact.Merge(m, src)
-}
-func (m *Contact) XXX_Size() int {
-	return xxx_messageInfo_Contact.Size(m)
-}
-func (m *Contact) XXX_DiscardUnknown() {
-	xxx_messageInfo_Contact.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Contact proto.InternalMessageInfo
+func (m *Contact) Reset()                    { *m = Contact{} }
+func (m *Contact) String() string            { return proto.CompactTextString(m) }
+func (*Contact) ProtoMessage()               {}
+func (*Contact) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
 
 func (m *Contact) GetPhone() []*Contact_PhoneNumber {
 	if m != nil {
@@ -89,7 +54,7 @@ func (m *Contact) GetPhone() []*Contact_PhoneNumber {
 	return nil
 }
 
-func (m *Contact) GetEmail() []*wrappers.StringValue {
+func (m *Contact) GetEmail() []*google_protobuf.StringValue {
 	if m != nil {
 		return m.Email
 	}
@@ -97,37 +62,14 @@ func (m *Contact) GetEmail() []*wrappers.StringValue {
 }
 
 type Contact_PhoneNumber struct {
-	Type                 Contact_PhoneType     `protobuf:"varint,1,opt,name=type,proto3,enum=Demo.Contact_PhoneType" json:"type,omitempty"`
-	Number               *wrappers.StringValue `protobuf:"bytes,2,opt,name=number,proto3" json:"number,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Type   Contact_PhoneType            `protobuf:"varint,1,opt,name=type,enum=Demo.Contact_PhoneType" json:"type,omitempty"`
+	Number *google_protobuf.StringValue `protobuf:"bytes,2,opt,name=number" json:"number,omitempty"`
 }
 
-func (m *Contact_PhoneNumber) Reset()         { *m = Contact_PhoneNumber{} }
-func (m *Contact_PhoneNumber) String() string { return proto.CompactTextString(m) }
-func (*Contact_PhoneNumber) ProtoMessage()    {}
-func (*Contact_PhoneNumber) Descriptor() ([]byte, []int) {
-	return fileDescriptor_a5036fff2565fb15, []int{0, 0}
-}
-
-func (m *Contact_PhoneNumber) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Contact_PhoneNumber.Unmarshal(m, b)
-}
-func (m *Contact_PhoneNumber) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Contact_PhoneNumber.Marshal(b, m, deterministic)
-}
-func (m *Contact_PhoneNumber) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Contact_PhoneNumber.Merge(m, src)
-}
-func (m *Contact_PhoneNumber) XXX_Size() int {
-	return xxx_messageInfo_Contact_PhoneNumber.Size(m)
-}
-func (m *Contact_PhoneNumber) XXX_DiscardUnknown() {
-	xxx_messageInfo_Contact_PhoneNumber.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Contact_PhoneNumber proto.InternalMessageInfo
+func (m *Contact_PhoneNumber) Reset()                    { *m = Contact_PhoneNumber{} }
+func (m *Contact_PhoneNumber) String() string            { return proto.CompactTextString(m) }
+func (*Contact_PhoneNumber) ProtoMessage()               {}
+func (*Contact_PhoneNumber) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0, 0} }
 
 func (m *Contact_PhoneNumber) GetType() Contact_PhoneType {
 	if m != nil {
@@ -136,7 +78,7 @@ func (m *Contact_PhoneNumber) GetType() Contact_PhoneType {
 	return Contact_UNSET
 }
 
-func (m *Contact_PhoneNumber) GetNumber() *wrappers.StringValue {
+func (m *Contact_PhoneNumber) GetNumber() *google_protobuf.StringValue {
 	if m != nil {
 		return m.Number
 	}
@@ -144,14 +86,14 @@ func (m *Contact_PhoneNumber) GetNumber() *wrappers.StringValue {
 }
 
 func init() {
-	proto.RegisterEnum("Demo.Contact_PhoneType", Contact_PhoneType_name, Contact_PhoneType_value)
 	proto.RegisterType((*Contact)(nil), "Demo.Contact")
 	proto.RegisterType((*Contact_PhoneNumber)(nil), "Demo.Contact.PhoneNumber")
+	proto.RegisterEnum("Demo.Contact_PhoneType", Contact_PhoneType_name, Contact_PhoneType_value)
 }
 
-func init() { proto.RegisterFile("contact.proto", fileDescriptor_a5036fff2565fb15) }
+func init() { proto.RegisterFile("contact.proto", fileDescriptor1) }
 
-var fileDescriptor_a5036fff2565fb15 = []byte{
+var fileDescriptor1 = []byte{
 	// 241 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4d, 0xce, 0xcf, 0x2b,
 	0x49, 0x4c, 0x2e, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x71, 0x49, 0xcd, 0xcd, 0x97,

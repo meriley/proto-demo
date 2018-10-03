@@ -1,0 +1,14 @@
+syntax="proto3";
+
+package Demo;
+
+option go_package="myproto";
+
+import "google/protobuf/wrappers.proto";
+import "person.proto";
+
+message AddressBook{
+    google.protobuf.StringValue bookname    = 1;
+    map<string, Person>         contact     = 2;
+}
+

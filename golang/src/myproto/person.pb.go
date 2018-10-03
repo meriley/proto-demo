@@ -3,23 +3,15 @@
 
 package myproto
 
-import (
-	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
-	math "math"
-)
+import proto "github.com/golang/protobuf/proto"
+import fmt "fmt"
+import math "math"
+import google_protobuf "github.com/golang/protobuf/ptypes/wrappers"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
-
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
 type Person_Prefix int32
 
@@ -36,7 +28,6 @@ var Person_Prefix_name = map[int32]string{
 	2: "MS",
 	3: "MRS",
 }
-
 var Person_Prefix_value = map[string]int32{
 	"PFX_UNSET": 0,
 	"MR":        1,
@@ -47,10 +38,7 @@ var Person_Prefix_value = map[string]int32{
 func (x Person_Prefix) String() string {
 	return proto.EnumName(Person_Prefix_name, int32(x))
 }
-
-func (Person_Prefix) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_4c9e10cf24b1156d, []int{0, 0}
-}
+func (Person_Prefix) EnumDescriptor() ([]byte, []int) { return fileDescriptor3, []int{0, 0} }
 
 type Person_Suffix int32
 
@@ -65,7 +53,6 @@ var Person_Suffix_name = map[int32]string{
 	1: "JR",
 	2: "SR",
 }
-
 var Person_Suffix_value = map[string]int32{
 	"SFX_UNSET": 0,
 	"JR":        1,
@@ -75,47 +62,21 @@ var Person_Suffix_value = map[string]int32{
 func (x Person_Suffix) String() string {
 	return proto.EnumName(Person_Suffix_name, int32(x))
 }
-
-func (Person_Suffix) EnumDescriptor() ([]byte, []int) {
-	return fileDescriptor_4c9e10cf24b1156d, []int{0, 1}
-}
+func (Person_Suffix) EnumDescriptor() ([]byte, []int) { return fileDescriptor3, []int{0, 1} }
 
 type Person struct {
-	Prefix               Person_Prefix         `protobuf:"varint,1,opt,name=prefix,proto3,enum=Demo.Person_Prefix" json:"prefix,omitempty"`
-	First                *wrappers.StringValue `protobuf:"bytes,2,opt,name=first,proto3" json:"first,omitempty"`
-	Last                 *wrappers.StringValue `protobuf:"bytes,3,opt,name=last,proto3" json:"last,omitempty"`
-	Suffix               Person_Suffix         `protobuf:"varint,4,opt,name=suffix,proto3,enum=Demo.Person_Suffix" json:"suffix,omitempty"`
-	Location             *Location             `protobuf:"bytes,5,opt,name=location,proto3" json:"location,omitempty"`
-	Contact              *Contact              `protobuf:"bytes,6,opt,name=contact,proto3" json:"contact,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Prefix   Person_Prefix                `protobuf:"varint,1,opt,name=prefix,enum=Demo.Person_Prefix" json:"prefix,omitempty"`
+	First    *google_protobuf.StringValue `protobuf:"bytes,2,opt,name=first" json:"first,omitempty"`
+	Last     *google_protobuf.StringValue `protobuf:"bytes,3,opt,name=last" json:"last,omitempty"`
+	Suffix   Person_Suffix                `protobuf:"varint,4,opt,name=suffix,enum=Demo.Person_Suffix" json:"suffix,omitempty"`
+	Location *Location                    `protobuf:"bytes,5,opt,name=location" json:"location,omitempty"`
+	Contact  *Contact                     `protobuf:"bytes,6,opt,name=contact" json:"contact,omitempty"`
 }
 
-func (m *Person) Reset()         { *m = Person{} }
-func (m *Person) String() string { return proto.CompactTextString(m) }
-func (*Person) ProtoMessage()    {}
-func (*Person) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4c9e10cf24b1156d, []int{0}
-}
-
-func (m *Person) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Person.Unmarshal(m, b)
-}
-func (m *Person) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Person.Marshal(b, m, deterministic)
-}
-func (m *Person) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Person.Merge(m, src)
-}
-func (m *Person) XXX_Size() int {
-	return xxx_messageInfo_Person.Size(m)
-}
-func (m *Person) XXX_DiscardUnknown() {
-	xxx_messageInfo_Person.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Person proto.InternalMessageInfo
+func (m *Person) Reset()                    { *m = Person{} }
+func (m *Person) String() string            { return proto.CompactTextString(m) }
+func (*Person) ProtoMessage()               {}
+func (*Person) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
 
 func (m *Person) GetPrefix() Person_Prefix {
 	if m != nil {
@@ -124,14 +85,14 @@ func (m *Person) GetPrefix() Person_Prefix {
 	return Person_PFX_UNSET
 }
 
-func (m *Person) GetFirst() *wrappers.StringValue {
+func (m *Person) GetFirst() *google_protobuf.StringValue {
 	if m != nil {
 		return m.First
 	}
 	return nil
 }
 
-func (m *Person) GetLast() *wrappers.StringValue {
+func (m *Person) GetLast() *google_protobuf.StringValue {
 	if m != nil {
 		return m.Last
 	}
@@ -160,14 +121,14 @@ func (m *Person) GetContact() *Contact {
 }
 
 func init() {
+	proto.RegisterType((*Person)(nil), "Demo.Person")
 	proto.RegisterEnum("Demo.Person_Prefix", Person_Prefix_name, Person_Prefix_value)
 	proto.RegisterEnum("Demo.Person_Suffix", Person_Suffix_name, Person_Suffix_value)
-	proto.RegisterType((*Person)(nil), "Demo.Person")
 }
 
-func init() { proto.RegisterFile("person.proto", fileDescriptor_4c9e10cf24b1156d) }
+func init() { proto.RegisterFile("person.proto", fileDescriptor3) }
 
-var fileDescriptor_4c9e10cf24b1156d = []byte{
+var fileDescriptor3 = []byte{
 	// 298 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x50, 0x4d, 0x4b, 0xc3, 0x40,
 	0x10, 0x35, 0x69, 0xba, 0xb1, 0xa3, 0x09, 0x61, 0xbd, 0x84, 0x22, 0x52, 0x72, 0x69, 0x51, 0xd8,

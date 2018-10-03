@@ -3,89 +3,58 @@
 
 package myproto
 
-import (
-	fmt "fmt"
-	proto "github.com/golang/protobuf/proto"
-	wrappers "github.com/golang/protobuf/ptypes/wrappers"
-	math "math"
-)
+import proto "github.com/golang/protobuf/proto"
+import fmt "fmt"
+import math "math"
+import google_protobuf "github.com/golang/protobuf/ptypes/wrappers"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
-// This is a compile-time assertion to ensure that this generated file
-// is compatible with the proto package it is being compiled against.
-// A compilation error at this line likely means your copy of the
-// proto package needs to be updated.
-const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
-
 type Location struct {
-	Address1             *wrappers.StringValue `protobuf:"bytes,1,opt,name=address1,proto3" json:"address1,omitempty"`
-	Address2             *wrappers.StringValue `protobuf:"bytes,2,opt,name=address2,proto3" json:"address2,omitempty"`
-	City                 *wrappers.StringValue `protobuf:"bytes,3,opt,name=city,proto3" json:"city,omitempty"`
-	State                *wrappers.StringValue `protobuf:"bytes,4,opt,name=state,proto3" json:"state,omitempty"`
-	Zip                  *wrappers.UInt32Value `protobuf:"bytes,5,opt,name=zip,proto3" json:"zip,omitempty"`
-	XXX_NoUnkeyedLiteral struct{}              `json:"-"`
-	XXX_unrecognized     []byte                `json:"-"`
-	XXX_sizecache        int32                 `json:"-"`
+	Address1 *google_protobuf.StringValue `protobuf:"bytes,1,opt,name=address1" json:"address1,omitempty"`
+	Address2 *google_protobuf.StringValue `protobuf:"bytes,2,opt,name=address2" json:"address2,omitempty"`
+	City     *google_protobuf.StringValue `protobuf:"bytes,3,opt,name=city" json:"city,omitempty"`
+	State    *google_protobuf.StringValue `protobuf:"bytes,4,opt,name=state" json:"state,omitempty"`
+	Zip      *google_protobuf.UInt32Value `protobuf:"bytes,5,opt,name=zip" json:"zip,omitempty"`
 }
 
-func (m *Location) Reset()         { *m = Location{} }
-func (m *Location) String() string { return proto.CompactTextString(m) }
-func (*Location) ProtoMessage()    {}
-func (*Location) Descriptor() ([]byte, []int) {
-	return fileDescriptor_4f0f35158dcf9f2c, []int{0}
-}
+func (m *Location) Reset()                    { *m = Location{} }
+func (m *Location) String() string            { return proto.CompactTextString(m) }
+func (*Location) ProtoMessage()               {}
+func (*Location) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
-func (m *Location) XXX_Unmarshal(b []byte) error {
-	return xxx_messageInfo_Location.Unmarshal(m, b)
-}
-func (m *Location) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
-	return xxx_messageInfo_Location.Marshal(b, m, deterministic)
-}
-func (m *Location) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_Location.Merge(m, src)
-}
-func (m *Location) XXX_Size() int {
-	return xxx_messageInfo_Location.Size(m)
-}
-func (m *Location) XXX_DiscardUnknown() {
-	xxx_messageInfo_Location.DiscardUnknown(m)
-}
-
-var xxx_messageInfo_Location proto.InternalMessageInfo
-
-func (m *Location) GetAddress1() *wrappers.StringValue {
+func (m *Location) GetAddress1() *google_protobuf.StringValue {
 	if m != nil {
 		return m.Address1
 	}
 	return nil
 }
 
-func (m *Location) GetAddress2() *wrappers.StringValue {
+func (m *Location) GetAddress2() *google_protobuf.StringValue {
 	if m != nil {
 		return m.Address2
 	}
 	return nil
 }
 
-func (m *Location) GetCity() *wrappers.StringValue {
+func (m *Location) GetCity() *google_protobuf.StringValue {
 	if m != nil {
 		return m.City
 	}
 	return nil
 }
 
-func (m *Location) GetState() *wrappers.StringValue {
+func (m *Location) GetState() *google_protobuf.StringValue {
 	if m != nil {
 		return m.State
 	}
 	return nil
 }
 
-func (m *Location) GetZip() *wrappers.UInt32Value {
+func (m *Location) GetZip() *google_protobuf.UInt32Value {
 	if m != nil {
 		return m.Zip
 	}
@@ -96,9 +65,9 @@ func init() {
 	proto.RegisterType((*Location)(nil), "Demo.Location")
 }
 
-func init() { proto.RegisterFile("location.proto", fileDescriptor_4f0f35158dcf9f2c) }
+func init() { proto.RegisterFile("location.proto", fileDescriptor2) }
 
-var fileDescriptor_4f0f35158dcf9f2c = []byte{
+var fileDescriptor2 = []byte{
 	// 191 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xcb, 0xc9, 0x4f, 0x4e,
 	0x2c, 0xc9, 0xcc, 0xcf, 0xd3, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0x62, 0x71, 0x49, 0xcd, 0xcd,
