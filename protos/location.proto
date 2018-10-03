@@ -1,0 +1,15 @@
+syntax="proto3";
+
+package Demo;
+
+option go_package = "myproto";
+
+import "google/protobuf/wrappers.proto";
+
+message Location {
+    google.protobuf.StringValue address1    = 1;
+    google.protobuf.StringValue address2    = 2;
+    google.protobuf.StringValue city        = 3;
+    google.protobuf.StringValue state       = 4;
+    google.protobuf.UInt32Value zip         = 5;
+}

@@ -1,0 +1,4 @@
+#
+#   To Generate the proto structs that go here run the command below form the protodemo folder.
+#
+protoc ./protos/location.proto ./protos/contact.proto ./protos/person.proto --proto_path="./protos" --go_out="./golang/src/myproto"
